@@ -99,7 +99,7 @@ STRING is a `format' string, and ARGS are the formatted objects."
 (defun git-on-branch ()
   "Return currently active branch."
   (condition-case err
-      (git--clean (git-run "rev-parse" "--abbrev-ref" "HEAD"))
+      (git--clean (git-run "symbolic-ref" "--short" "HEAD"))
     (git-error
      (git-error "Repository not initialized"))))
 
